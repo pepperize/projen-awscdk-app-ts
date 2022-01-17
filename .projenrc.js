@@ -35,6 +35,14 @@ const project = new cdk.JsiiProject({
     releaseEveryCommit: true,
   },
   releaseToNpm: true,
+  publishToNuget: {
+    dotNetNamespace: "Pepperize.Projen",
+    packageId: "Pepperize.Projen.AwscdkConstruct",
+  },
+  publishToPypi: {
+    distName: "pepperize.projen-awscdk-construct",
+    module: "pepperize_projen_awscdk_construct",
+  },
 
   gitignore: [".idea/", "*.iml"],
 
