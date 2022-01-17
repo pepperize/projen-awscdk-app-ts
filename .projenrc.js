@@ -1,6 +1,6 @@
-const { typescript, javascript } = require("projen");
-const project = new typescript.TypeScriptProject({
-  authorName: "Patrick Florek",
+const { javascript, cdk } = require("projen");
+const project = new cdk.JsiiProject({
+  author: "Patrick Florek",
   authorAddress: "patrick.florek@gmail.com",
   authorOrganization: true,
   license: "MIT",
@@ -39,6 +39,7 @@ const project = new typescript.TypeScriptProject({
   gitignore: [".idea/", "*.iml"],
 
   deps: ["projen"] /* Runtime dependencies of this module. */,
+  peerDeps: ["projen"],
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
