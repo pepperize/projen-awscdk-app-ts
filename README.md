@@ -16,7 +16,7 @@ To create a new project, run the following command and follow the instructions:
 mkdir my-project
 cd my-project
 git init -b main
-npx projen new @pepperize/projen-awscdk-construct
+npx projen new --from @pepperize/projen-awscdk-construct
 ```
 
 _If your git cli doesn't have a `-b` option, either update [git](https://git-scm.com/) or issue `git init && git checkout -b main`._
