@@ -53,7 +53,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
     this.prettier?.addIgnorePattern("API.md");
     this.formatTask = this.addTask("format", {
       description: "Format with prettier",
-      exec: "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md",
+      exec: "prettier --write src/{**/,}*.ts test/{**/,}*.ts .projenrc.js README.md",
     });
 
     this.jest?.addTestMatch("**/?(*.)@(spec|test).[tj]s?(x)");
