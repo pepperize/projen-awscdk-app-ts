@@ -21,6 +21,9 @@ const project = new cdk.JsiiProject({
     },
   },
   dependabot: true,
+  dependabotOptions: {
+    labels: ["auto-approve"],
+  },
 
   prettier: true,
   prettierOptions: {

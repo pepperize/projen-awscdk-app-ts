@@ -29,6 +29,9 @@ export class AwsCdkConstructLibrary extends awscdk.AwsCdkConstructLibrary {
         },
       },
       dependabot: true,
+      dependabotOptions: {
+        labels: ["auto-approve"],
+      },
       eslint: true,
       prettier: true,
       prettierOptions: {
