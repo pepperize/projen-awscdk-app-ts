@@ -4,25 +4,25 @@
 
 ## Classes <a name="Classes" id="classes"></a>
 
-### AwsCdkConstructLibrary <a name="@pepperize/projen-awscdk-construct.AwsCdkConstructLibrary" id="pepperizeprojenawscdkconstructawscdkconstructlibrary"></a>
+### AwsCdkTypeScriptApp <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptApp" id="pepperizeprojenawscdkapptsawscdktypescriptapp"></a>
 
-#### Initializers <a name="@pepperize/projen-awscdk-construct.AwsCdkConstructLibrary.Initializer" id="pepperizeprojenawscdkconstructawscdkconstructlibraryinitializer"></a>
+#### Initializers <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptApp.Initializer" id="pepperizeprojenawscdkapptsawscdktypescriptappinitializer"></a>
 
 ```typescript
-import { AwsCdkConstructLibrary } from '@pepperize/projen-awscdk-construct'
+import { AwsCdkTypeScriptApp } from '@pepperize/projen-awscdk-app-ts'
 
-new AwsCdkConstructLibrary(options: AwsCdkConstructLibraryOptions)
+new AwsCdkTypeScriptApp(options: AwsCdkTypeScriptAppOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`options`](#pepperizeprojenawscdkconstructawscdkconstructlibraryparameteroptions)<span title="Required">*</span> | [`projen.awscdk.AwsCdkConstructLibraryOptions`](#projen.awscdk.AwsCdkConstructLibraryOptions) | *No description.* |
+| [`options`](#pepperizeprojenawscdkapptsawscdktypescriptappparameteroptions)<span title="Required">*</span> | [`projen.awscdk.AwsCdkTypeScriptAppOptions`](#projen.awscdk.AwsCdkTypeScriptAppOptions) | *No description.* |
 
 ---
 
-##### `options`<sup>Required</sup> <a name="@pepperize/projen-awscdk-construct.AwsCdkConstructLibrary.parameter.options" id="pepperizeprojenawscdkconstructawscdkconstructlibraryparameteroptions"></a>
+##### `options`<sup>Required</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptApp.parameter.options" id="pepperizeprojenawscdkapptsawscdktypescriptappparameteroptions"></a>
 
-- *Type:* [`projen.awscdk.AwsCdkConstructLibraryOptions`](#projen.awscdk.AwsCdkConstructLibraryOptions)
+- *Type:* [`projen.awscdk.AwsCdkTypeScriptAppOptions`](#projen.awscdk.AwsCdkTypeScriptAppOptions)
 
 ---
 
@@ -32,11 +32,11 @@ new AwsCdkConstructLibrary(options: AwsCdkConstructLibraryOptions)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`formatTask`](#pepperizeprojenawscdkconstructawscdkconstructlibrarypropertyformattask)<span title="Required">*</span> | [`projen.Task`](#projen.Task) | The "format" task. |
+| [`formatTask`](#pepperizeprojenawscdkapptsawscdktypescriptapppropertyformattask)<span title="Required">*</span> | [`projen.Task`](#projen.Task) | The "format" task. |
 
 ---
 
-##### `formatTask`<sup>Required</sup> <a name="@pepperize/projen-awscdk-construct.AwsCdkConstructLibrary.property.formatTask" id="pepperizeprojenawscdkconstructawscdkconstructlibrarypropertyformattask"></a>
+##### `formatTask`<sup>Required</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptApp.property.formatTask" id="pepperizeprojenawscdkapptsawscdktypescriptapppropertyformattask"></a>
 
 ```typescript
 public readonly formatTask: Task;

@@ -1,6 +1,6 @@
 import { awscdk, javascript, Task } from "projen";
 
-export class AwsCdkConstructLibrary extends awscdk.AwsCdkConstructLibrary {
+export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
   /**
    * The "format" task.
    */
@@ -9,7 +9,7 @@ export class AwsCdkConstructLibrary extends awscdk.AwsCdkConstructLibrary {
   /**
    * @experimental
    */
-  constructor(options: awscdk.AwsCdkConstructLibraryOptions) {
+  constructor(options: awscdk.AwsCdkTypeScriptAppOptions) {
     super({
       ...options,
       authorOrganization: true,

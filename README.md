@@ -1,10 +1,10 @@
-[![GitHub](https://img.shields.io/github/license/pepperize/projen-awscdk-construct?style=flat-square)](https://github.com/pepperize/projen-awscdk-construct/blob/main/LICENSE)
-[![npm (scoped)](https://img.shields.io/npm/v/@pepperize/projen-awscdk-construct?style=flat-square)](https://www.npmjs.com/package/@pepperize/projen-awscdk-construct)
-[![PyPI](https://img.shields.io/pypi/v/pepperize.projen-awscdk-construct?style=flat-square)](https://pypi.org/project/pepperize.projen-awscdk-construct/)
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/pepperize/projen-awscdk-construct/release/main?label=release&style=flat-square)](https://github.com/pepperize/projen-awscdk-construct/actions/workflows/release.yml)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pepperize/projen-awscdk-construct?sort=semver&style=flat-square)](https://github.com/pepperize/projen-awscdk-construct/releases)
+[![GitHub](https://img.shields.io/github/license/pepperize/projen-awscdk-app-ts?style=flat-square)](https://github.com/pepperize/projen-awscdk-app-ts/blob/main/LICENSE)
+[![npm (scoped)](https://img.shields.io/npm/v/@pepperize/projen-awscdk-app-ts?style=flat-square)](https://www.npmjs.com/package/@pepperize/projen-awscdk-app-ts)
+[![PyPI](https://img.shields.io/pypi/v/pepperize.projen-awscdk-app-ts?style=flat-square)](https://pypi.org/project/pepperize.projen-awscdk-app-ts/)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/pepperize/projen-awscdk-app-ts/release/main?label=release&style=flat-square)](https://github.com/pepperize/projen-awscdk-app-ts/actions/workflows/release.yml)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pepperize/projen-awscdk-app-ts?sort=semver&style=flat-square)](https://github.com/pepperize/projen-awscdk-app-ts/releases)
 
-# Projen awscdk-construct
+# Projen awscdk-app-ts
 
 This project provides a projen project type providing presets for an AWS CDK construct library project.
 
@@ -16,7 +16,7 @@ To create a new project, run the following command and follow the instructions:
 mkdir my-project
 cd my-project
 git init -b main
-npx projen new --from @pepperize/projen-awscdk-construct
+npx projen new --from @pepperize/projen-awscdk-app-ts
 ```
 
 _If your git cli doesn't have a `-b` option, either update [git](https://git-scm.com/) or issue `git init && git checkout -b main`._
@@ -26,7 +26,7 @@ _If your git cli doesn't have a `-b` option, either update [git](https://git-scm
 To init a new project from this module:
 
 ```shell
-npx projen new --from @pepperize/projen-awscdk-construct
+npx projen new --from @pepperize/projen-awscdk-app-ts
 ```
 
 ## Create a new projen project type

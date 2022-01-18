@@ -5,10 +5,10 @@ const project = new cdk.JsiiProject({
   authorOrganization: true,
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
-  name: "@pepperize/projen-awscdk-construct",
+  name: "@pepperize/projen-awscdk-app-ts",
   description: "This project provides a projen project type providing presets for an AWS CDK construct library project",
   keywords: ["aws", "cdk", "projen"],
-  repositoryUrl: "https://github.com/pepperize/projen-awscdk-construct.git",
+  repositoryUrl: "https://github.com/pepperize/projen-awscdk-app-ts.git",
 
   autoApproveUpgrades: true,
   autoApproveOptions: {
@@ -43,8 +43,8 @@ const project = new cdk.JsiiProject({
   //   packageId: "Pepperize.Projen.AwscdkConstruct",
   // },
   publishToPypi: {
-    distName: "pepperize.projen-awscdk-construct",
-    module: "pepperize_projen_awscdk_construct",
+    distName: "pepperize.projen-awscdk-app-ts",
+    module: "pepperize_projen_awscdk_app_ts",
   },
 
   gitignore: [".idea/", "*.iml"],
