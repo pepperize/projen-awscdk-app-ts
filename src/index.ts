@@ -11,6 +11,9 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
    */
   constructor(options: awscdk.AwsCdkTypeScriptAppOptions) {
     super({
+      authorName: "Pepperize UG (haftungsbeschränkt)",
+      authorEmail: "info@pepperize.com",
+      authorUrl: "https://www.pepperize.com",
       ...options,
       authorOrganization: true,
       license: "MIT",
