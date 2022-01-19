@@ -29,7 +29,7 @@ To init a new project from this module:
 npx projen new --from @pepperize/projen-awscdk-app-ts@latest
 ```
 
-_Note: the `latest` version will be installed. If you don't specify the `latest` version, it won't be upgraded while running `npx projen`_
+_Note: the `latest` version will be installed. If you don't specify the `latest` version, it won't be upgraded while running `yarn install`_
 
 ## Create a new projen project type
 
