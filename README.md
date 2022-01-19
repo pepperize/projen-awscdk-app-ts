@@ -26,8 +26,10 @@ _If your git cli doesn't have a `-b` option, either update [git](https://git-scm
 To init a new project from this module:
 
 ```shell
-npx projen new --from @pepperize/projen-awscdk-app-ts
+npx projen new --from @pepperize/projen-awscdk-app-ts@latest
 ```
+
+_Note: the `latest` version will be installed. If you don't specify the `latest` version, it won't be upgraded while running `yarn install`_
 
 ## Create a new projen project type
 
