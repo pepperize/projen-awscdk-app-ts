@@ -38,10 +38,10 @@ const project = new cdk.JsiiProject({
     releaseEveryCommit: true,
   },
   releaseToNpm: true,
-  publishToNuget: {
-    dotNetNamespace: "Pepperize.Projen",
-    packageId: "Pepperize.Projen.AwsCdkTypeScriptApp",
-  },
+  // publishToNuget: {
+  //  dotNetNamespace: "Pepperize.Projen",
+  //  packageId: "Pepperize.Projen.AwsCdkTypeScriptApp",
+  // },
   publishToPypi: {
     distName: "pepperize.projen-awscdk-app-ts",
     module: "pepperize_projen_awscdk_app_ts",
@@ -49,11 +49,8 @@ const project = new cdk.JsiiProject({
 
   gitignore: [".idea/", "*.iml"],
 
-  deps: ["projen"] /* Runtime dependencies of this module. */,
+  devDeps: ["projen"],
   peerDeps: ["projen"],
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
 });
 
 project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md");
