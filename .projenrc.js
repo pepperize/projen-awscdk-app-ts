@@ -38,10 +38,10 @@ const project = new cdk.JsiiProject({
     releaseEveryCommit: true,
   },
   releaseToNpm: true,
-  // publishToNuget: {
-  //   dotNetNamespace: "Pepperize.Projen",
-  //   packageId: "Pepperize.Projen.AwscdkConstruct",
-  // },
+  publishToNuget: {
+    dotNetNamespace: "Pepperize.Projen",
+    packageId: "Pepperize.Projen.AwsCdkTypeScriptApp",
+  },
   publishToPypi: {
     distName: "pepperize.projen-awscdk-app-ts",
     module: "pepperize_projen_awscdk_app_ts",
@@ -58,6 +58,6 @@ const project = new cdk.JsiiProject({
 
 project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md");
 
-project.jest.addTestMatch("**/?(*.)@(spec|test).[tj]s?(x)");
+project.jest.addTestMatch("<rootDir>/**/?(*.)@(spec|test).[tj]s?(x)");
 
 project.synth();

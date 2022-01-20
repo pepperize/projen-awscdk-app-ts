@@ -138,6 +138,21 @@
         },
         {
           "spawn": "package:python"
+        },
+        {
+          "spawn": "package:dotnet"
+        }
+      ]
+    },
+    "package:dotnet": {
+      "name": "package:dotnet",
+      "description": "Create dotnet language bindings",
+      "steps": [
+        {
+          "exec": "jsii_version=$(node -p \"JSON.parse(fs.readFileSync('.jsii')).jsiiVersion.split(' ')[0]\")"
+        },
+        {
+          "exec": "npx jsii-pacmak@$jsii_version -v --target dotnet"
         }
       ]
     },

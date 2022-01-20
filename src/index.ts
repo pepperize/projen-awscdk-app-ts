@@ -1,5 +1,7 @@
 import { awscdk, javascript, Task } from "projen";
 
+export interface AwsCdkTypeScriptAppOptions extends awscdk.AwsCdkTypeScriptAppOptions {}
+
 export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
   /**
    * The "format" task.
@@ -9,7 +11,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
   /**
    * @experimental
    */
-  constructor(options: awscdk.AwsCdkTypeScriptAppOptions) {
+  constructor(options: AwsCdkTypeScriptAppOptions) {
     super({
       authorName: "Pepperize UG (haftungsbeschränkt)",
       authorEmail: "info@pepperize.com",
@@ -59,6 +61,6 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
       exec: "prettier --write src/{**/,}*.ts test/{**/,}*.ts .projenrc.js README.md",
     });
 
-    this.jest?.addTestMatch("**/?(*.)@(spec|test).[tj]s?(x)");
+    this.jest?.addTestMatch("<rootDir>/**/?(*.)@(spec|test).[tj]s?(x)");
   }
 }
