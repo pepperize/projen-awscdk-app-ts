@@ -67,7 +67,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
     if (!this.github?.mergify) {
       const conditions: Array<string> = [];
       conditions.push("github.event.pull_request.user.login == 'dependabot[bot]'");
-      conditions.push("contains(github.event.pull_request.labels.*.name, 'auto-approve'");
+      conditions.push("contains(github.event.pull_request.labels.*.name, 'auto-approve')");
       conditions.push("github.event.review.state == 'approved'");
 
       const mergeJob: Job = {
