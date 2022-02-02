@@ -68,7 +68,6 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
       const conditions: Array<string> = [];
       conditions.push("github.event.pull_request.user.login == 'dependabot[bot]'");
       conditions.push("contains(github.event.pull_request.labels.*.name, 'auto-approve'");
-      conditions.push("-label~=(do-not-merge)");
       conditions.push("#approved-reviews-by>=1");
 
       const mergeJob: Job = {
@@ -86,7 +85,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
             uses: "pascalgn/automerge-action@v0.14.3",
             env: {
               GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-              MERGE_LABELS: "",
+              MERGE_LABELS: "!do-not-merge",
               MERGE_FORKS: "false",
               MERGE_RETRY_SLEEP: "60000",
               MERGE_DELETE_BRANCH: "true",
