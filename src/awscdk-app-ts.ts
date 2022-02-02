@@ -73,6 +73,8 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
         runsOn: ["ubuntu-latest"],
         permissions: {
           pullRequests: JobPermission.WRITE,
+          checks: JobPermission.WRITE,
+          contents: JobPermission.WRITE,
         },
         if: conditions.join(" && "),
         steps: [
