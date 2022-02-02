@@ -77,9 +77,6 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
         if: conditions.join(" && "),
         steps: [
           {
-            uses: "actions/checkout@v2",
-          },
-          {
             // https://github.com/pascalgn/automerge-action
             uses: "pascalgn/automerge-action@v0.14.3",
             env: {
