@@ -68,7 +68,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
       const conditions: Array<string> = [];
       conditions.push("github.event.pull_request.user.login == 'dependabot[bot]'");
       conditions.push("contains(github.event.pull_request.labels.*.name, 'auto-approve'");
-      conditions.push("#approved-reviews-by>=1");
+      conditions.push("github.event.review.state == 'approved'");
 
       const mergeJob: Job = {
         runsOn: ["ubuntu-latest"],
@@ -89,6 +89,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
               MERGE_FORKS: "false",
               MERGE_RETRY_SLEEP: "60000",
               MERGE_DELETE_BRANCH: "true",
+              MERGE_REQUIRED_APPROVALS: "1",
             },
           },
         ],
