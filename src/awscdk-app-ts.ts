@@ -64,7 +64,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
 
     this.jest?.addTestMatch("<rootDir>/**/?(*.)@(spec|test).[tj]s?(x)");
 
-    if (!this.github?.mergify) {
+    if (!this.github?.mergify && options.github) {
       const conditions: Array<string> = [];
       conditions.push("github.event.pull_request.user.login == 'dependabot[bot]'");
       conditions.push("contains(github.event.pull_request.labels.*.name, 'auto-approve')");
