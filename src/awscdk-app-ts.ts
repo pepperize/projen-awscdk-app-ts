@@ -17,6 +17,10 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
       authorName: "Pepperize UG (haftungsbeschränkt)",
       authorEmail: "info@pepperize.com",
       authorUrl: "https://www.pepperize.com",
+      dependabot: true,
+      dependabotOptions: {
+        labels: ["auto-approve"],
+      },
       ...options,
       authorOrganization: true,
       license: "MIT",
@@ -34,10 +38,6 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
           ...options.depsUpgradeOptions?.workflowOptions,
           secret: "PROJEN_GITHUB_TOKEN",
         },
-      },
-      dependabot: true,
-      dependabotOptions: {
-        labels: ["auto-approve"],
       },
       eslint: true,
       prettier: true,
