@@ -96,23 +96,8 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
 
       const workflow = this.github?.addWorkflow("auto-merge")!;
       workflow.on({
-        pullRequestTarget: {
-          types: [
-            "labeled",
-            "unlabeled",
-            "synchronize",
-            "opened",
-            "edited",
-            "ready_for_review",
-            "reopened",
-            "unlocked",
-          ],
-        },
         pullRequestReview: {
           types: ["submitted"],
-        },
-        checkSuite: {
-          types: ["completed"],
         },
       });
       workflow.addJobs({ merge: mergeJob });
