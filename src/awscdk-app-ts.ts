@@ -84,7 +84,8 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
             uses: "pascalgn/automerge-action@v0.14.3",
             env: {
               GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-              MERGE_LABELS: "auto-approve,auto-merge,!do-not-merge",
+              MERGE_LABELS: "auto-approve,!do-not-merge",
+              MERGE_METHOD: "merge",
               MERGE_FORKS: "false",
               MERGE_RETRY_SLEEP: "60000",
               MERGE_DELETE_BRANCH: "true",
@@ -96,9 +97,25 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
 
       const workflow = this.github?.addWorkflow("auto-merge")!;
       workflow.on({
+        pullRequest: {
+          types: [
+            "labeled",
+            "unlabeled",
+            "synchronize",
+            "opened",
+            "edited",
+            "ready_for_review",
+            "reopened",
+            "unlocked",
+          ],
+        },
         pullRequestReview: {
           types: ["submitted"],
         },
+        checkSuite: {
+          types: ["completed"],
+        },
+        status: {},
       });
       workflow.addJobs({ merge: mergeJob });
     }
