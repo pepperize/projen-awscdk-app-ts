@@ -1,4 +1,4 @@
-const { javascript, cdk } = require("projen");
+import { javascript, cdk } from "projen";
 const project = new cdk.JsiiProject({
   author: "Patrick Florek",
   authorAddress: "patrick.florek@gmail.com",
@@ -10,15 +10,12 @@ const project = new cdk.JsiiProject({
   keywords: ["aws", "cdk", "projen"],
   repositoryUrl: "https://github.com/pepperize/projen-awscdk-app-ts.git",
 
+  projenrcTs: true,
+
   autoApproveUpgrades: true,
   autoApproveOptions: {
-    allowedUsernames: ["unerty", "pflorek", "acfo", "dependabot[bot]"],
+    allowedUsernames: ["pflorek", "acfo", "dependabot[bot]"],
     secret: "GITHUB_TOKEN",
-  },
-  depsUpgradeOptions: {
-    workflowOptions: {
-      secret: "PROJEN_GITHUB_TOKEN",
-    },
   },
   dependabot: true,
   dependabotOptions: {
@@ -34,9 +31,7 @@ const project = new cdk.JsiiProject({
 
   defaultReleaseBranch: "main",
   npmAccess: javascript.NpmAccess.PUBLIC,
-  release: {
-    releaseEveryCommit: true,
-  },
+  release: true,
   releaseToNpm: true,
   // publishToNuget: {
   //  dotNetNamespace: "Pepperize.Projen",
@@ -53,8 +48,6 @@ const project = new cdk.JsiiProject({
   peerDeps: ["projen"],
 });
 
-project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md");
-
-project.jest.addTestMatch("<rootDir>/**/?(*.)@(spec|test).[tj]s?(x)");
+project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.[jt]s README.md");
 
 project.synth();
