@@ -18,13 +18,17 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`name`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyname)<span title="Required">*</span> | `string` | This is the name of your project. |
+| [`commitGenerated`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertycommitgenerated) | `boolean` | Whether to commit the managed files by default. |
 | [`logging`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertylogging) | [`projen.LoggerOptions`](#projen.LoggerOptions) | Configure logging options such as verbosity. |
 | [`outdir`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyoutdir) | `string` | The root directory of the project. |
 | [`parent`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyparent) | [`projen.Project`](#projen.Project) | The parent project, if this project is part of a bigger project. |
 | [`projenCommand`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojencommand) | `string` | The shell command to use in order to run the projen CLI. |
 | [`projenrcJson`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenrcjson) | `boolean` | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
 | [`projenrcJsonOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenrcjsonoptions) | [`projen.ProjenrcOptions`](#projen.ProjenrcOptions) | Options for .projenrc.json. |
+| [`renovatebot`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyrenovatebot) | `boolean` | Use renovatebot to handle dependency upgrades. |
+| [`renovatebotOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyrenovatebotoptions) | [`projen.RenovatebotOptions`](#projen.RenovatebotOptions) | Options for renovatebot. |
 | [`autoApproveOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautoapproveoptions) | [`projen.github.AutoApproveOptions`](#projen.github.AutoApproveOptions) | Enable and configure the 'auto approve' workflow. |
+| [`autoMerge`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautomerge) | `boolean` | Enable automatic merging on GitHub. |
 | [`autoMergeOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautomergeoptions) | [`projen.github.AutoMergeOptions`](#projen.github.AutoMergeOptions) | Configure options for automatic merging on GitHub. |
 | [`clobber`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyclobber) | `boolean` | Add a `clobber` task which resets the repo to origin. |
 | [`devContainer`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydevcontainer) | `boolean` | Add a VSCode development environment (used for GitHub Codespaces). |
@@ -34,6 +38,7 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | [`mergify`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertymergify) | `boolean` | Whether mergify should be enabled on this repository or not. |
 | [`mergifyOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertymergifyoptions) | [`projen.github.MergifyOptions`](#projen.github.MergifyOptions) | Options for mergify. |
 | [`projectType`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojecttype) | [`projen.ProjectType`](#projen.ProjectType) | Which type of project this is (library/app). |
+| [`projenCredentials`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojencredentials) | [`projen.github.GithubCredentials`](#projen.github.GithubCredentials) | Choose a method of providing GitHub API access for projen workflows. |
 | [`projenTokenSecret`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojentokensecret) | `string` | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
 | [`readme`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyreadme) | [`projen.SampleReadmeProps`](#projen.SampleReadmeProps) | The README setup. |
 | [`stale`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertystale) | `boolean` | Auto-close of stale issues and pull request. |
@@ -49,7 +54,7 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | [`bugsEmail`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertybugsemail) | `string` | The email address to which issues should be reported. |
 | [`bugsUrl`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertybugsurl) | `string` | The url to your project's issue tracker. |
 | [`bundledDeps`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertybundleddeps) | `string`[] | List of dependencies to bundle into this module. |
-| [`codeArtifactOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertycodeartifactoptions) | [`projen.javascript.CodeArtifactOptions`](#projen.javascript.CodeArtifactOptions) | Options for publishing npm package to AWS CodeArtifact. |
+| [`codeArtifactOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertycodeartifactoptions) | [`projen.javascript.CodeArtifactOptions`](#projen.javascript.CodeArtifactOptions) | Options for npm packages using AWS CodeArtifact. |
 | [`deps`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydeps) | `string`[] | Runtime dependencies of this module. |
 | [`description`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydescription) | `string` | The description is just a string that helps people understand the purpose of the package. |
 | [`devDeps`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydevdeps) | `string`[] | Build dependencies for this module. |
@@ -70,10 +75,12 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | [`peerDeps`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertypeerdeps) | `string`[] | Peer dependencies for this module. |
 | [`repository`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyrepository) | `string` | The repository is the location where the actual code for your package lives. |
 | [`repositoryDirectory`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyrepositorydirectory) | `string` | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
+| [`scopedPackagesOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyscopedpackagesoptions) | [`projen.javascript.ScopedPackagesOptions`](#projen.javascript.ScopedPackagesOptions)[] | Options for privately hosted scoped packages. |
 | [`scripts`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyscripts) | {[ key: string ]: `string`} | npm scripts to include. |
 | [`stability`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertystability) | `string` | Package's Stability. |
-| [`jsiiReleaseVersion`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyjsiireleaseversion) | `string` | Version requirement of `jsii-release` which is used to publish modules to npm. |
+| [`jsiiReleaseVersion`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyjsiireleaseversion) | `string` | Version requirement of `publib` which is used to publish modules to npm. |
 | [`majorVersion`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertymajorversion) | `number` | Major version to release from the default branch. |
+| [`minMajorVersion`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyminmajorversion) | `number` | Minimal Major version to release. |
 | [`npmDistTag`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertynpmdisttag) | `string` | The npmDistTag to use when publishing from the default branch. |
 | [`postBuildSteps`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertypostbuildsteps) | [`projen.github.workflows.JobStep`](#projen.github.workflows.JobStep)[] | Steps to execute after build as part of the release workflow. |
 | [`prerelease`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprerelease) | `string` | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
@@ -93,9 +100,9 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | [`workflowRunsOn`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyworkflowrunson) | `string`[] | Github Runner selection labels. |
 | [`defaultReleaseBranch`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydefaultreleasebranch)<span title="Required">*</span> | `string` | The name of the main release branch. |
 | [`artifactsDirectory`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyartifactsdirectory) | `string` | A directory which will contain build artifacts. |
-| [`autoApproveProjenUpgrades`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautoapproveprojenupgrades) | `boolean` | Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued). |
 | [`autoApproveUpgrades`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautoapproveupgrades) | `boolean` | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
 | [`buildWorkflow`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertybuildworkflow) | `boolean` | Define a GitHub workflow for building PRs. |
+| [`buildWorkflowTriggers`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertybuildworkflowtriggers) | [`projen.github.workflows.Triggers`](#projen.github.workflows.Triggers) | Build workflow triggers. |
 | [`bundlerOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertybundleroptions) | [`projen.javascript.BundlerOptions`](#projen.javascript.BundlerOptions) | Options for `Bundler`. |
 | [`codeCov`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertycodecov) | `boolean` | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret. |
 | [`codeCovTokenSecret`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertycodecovtokensecret) | `string` | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
@@ -104,7 +111,7 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | [`dependabot`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydependabot) | `boolean` | Use dependabot to handle dependency upgrades. |
 | [`dependabotOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydependabotoptions) | [`projen.github.DependabotOptions`](#projen.github.DependabotOptions) | Options for dependabot. |
 | [`depsUpgrade`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydepsupgrade) | `boolean` | Use github workflows to handle dependency upgrades. |
-| [`depsUpgradeOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydepsupgradeoptions) | [`projen.javascript.UpgradeDependenciesOptions`](#projen.javascript.UpgradeDependenciesOptions) | Options for depsUpgrade. |
+| [`depsUpgradeOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydepsupgradeoptions) | [`projen.javascript.UpgradeDependenciesOptions`](#projen.javascript.UpgradeDependenciesOptions) | Options for `UpgradeDependencies`. |
 | [`gitignore`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertygitignore) | `string`[] | Additional entries to .gitignore. |
 | [`jest`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyjest) | `boolean` | Setup jest unit tests. |
 | [`jestOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyjestoptions) | [`projen.javascript.JestOptions`](#projen.javascript.JestOptions) | Jest options. |
@@ -117,16 +124,13 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | [`projenDevDependency`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojendevdependency) | `boolean` | Indicates of "projen" should be installed as a devDependency. |
 | [`projenrcJs`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenrcjs) | `boolean` | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
 | [`projenrcJsOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenrcjsoptions) | [`projen.javascript.ProjenrcOptions`](#projen.javascript.ProjenrcOptions) | Options for .projenrc.js. |
-| [`projenUpgradeAutoMerge`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenupgradeautomerge) | `boolean` | Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued). |
-| [`projenUpgradeSchedule`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenupgradeschedule) | `string`[] | Customize the projenUpgrade schedule in cron expression. |
-| [`projenUpgradeSecret`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenupgradesecret) | `string` | Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`). |
 | [`projenVersion`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenversion) | `string` | Version of projen to install. |
 | [`pullRequestTemplate`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertypullrequesttemplate) | `boolean` | Include a GitHub pull request template. |
 | [`pullRequestTemplateContents`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertypullrequesttemplatecontents) | `string`[] | The contents of the pull request template. |
 | [`release`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyrelease) | `boolean` | Add release management to this project. |
 | [`releaseToNpm`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyreleasetonpm) | `boolean` | Automatically release to npm when new versions are introduced. |
 | [`releaseWorkflow`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyreleaseworkflow) | `boolean` | DEPRECATED: renamed to `release`. |
-| [`workflowBootstrapSteps`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyworkflowbootstrapsteps) | `any`[] | Workflow steps to use in order to bootstrap this repo. |
+| [`workflowBootstrapSteps`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyworkflowbootstrapsteps) | [`projen.github.workflows.JobStep`](#projen.github.workflows.JobStep)[] | Workflow steps to use in order to bootstrap this repo. |
 | [`workflowGitIdentity`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyworkflowgitidentity) | [`projen.github.GitIdentity`](#projen.github.GitIdentity) | The git identity to use in workflows. |
 | [`workflowNodeVersion`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyworkflownodeversion) | `string` | The node version to use in GitHub workflows. |
 | [`disableTsconfig`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertydisabletsconfig) | `boolean` | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
@@ -161,7 +165,10 @@ const awsCdkTypeScriptAppOptions: AwsCdkTypeScriptAppOptions = { ... }
 | [`cdkVersionPinning`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertycdkversionpinning) | `boolean` | Use pinned version instead of caret version for CDK. |
 | [`constructsVersion`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyconstructsversion) | `string` | Minimum version of the `constructs` library to depend on. |
 | [`appEntrypoint`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyappentrypoint) | `string` | The CDK app's entrypoint (relative to the source directory, which is "src" by default). |
+| [`edgeLambdaAutoDiscover`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyedgelambdaautodiscover) | `boolean` | Automatically adds an `cloudfront.experimental.EdgeFunction` for each `.edge-lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project. |
+| [`integrationTestAutoDiscover`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyintegrationtestautodiscover) | `boolean` | Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory. |
 | [`lambdaAutoDiscover`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertylambdaautodiscover) | `boolean` | Automatically adds an `awscdk.LambdaFunction` for each `.lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project. |
+| [`lambdaExtensionAutoDiscover`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertylambdaextensionautodiscover) | `boolean` | Automatically adds an `awscdk.LambdaExtension` for each `.lambda-extension.ts` entrypoint in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project. |
 | [`lambdaOptions`](#pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertylambdaoptions) | [`projen.awscdk.LambdaFunctionCommonOptions`](#projen.awscdk.LambdaFunctionCommonOptions) | Common options for all AWS Lambda functions. |
 
 ---
@@ -176,6 +183,19 @@ public readonly name: string;
 - *Default:* $BASEDIR
 
 This is the name of your project.
+
+---
+
+##### `commitGenerated`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.commitGenerated" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertycommitgenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* true
+
+Whether to commit the managed files by default.
 
 ---
 
@@ -260,6 +280,32 @@ Options for .projenrc.json.
 
 ---
 
+##### `renovatebot`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.renovatebot" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyrenovatebot"></a>
+
+```typescript
+public readonly renovatebot: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* false
+
+Use renovatebot to handle dependency upgrades.
+
+---
+
+##### `renovatebotOptions`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.renovatebotOptions" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyrenovatebotoptions"></a>
+
+```typescript
+public readonly renovatebotOptions: RenovatebotOptions;
+```
+
+- *Type:* [`projen.RenovatebotOptions`](#projen.RenovatebotOptions)
+- *Default:* default options
+
+Options for renovatebot.
+
+---
+
 ##### `autoApproveOptions`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.autoApproveOptions" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautoapproveoptions"></a>
 
 ```typescript
@@ -270,6 +316,21 @@ public readonly autoApproveOptions: AutoApproveOptions;
 - *Default:* auto approve is disabled
 
 Enable and configure the 'auto approve' workflow.
+
+---
+
+##### `autoMerge`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.autoMerge" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautomerge"></a>
+
+```typescript
+public readonly autoMerge: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* true
+
+Enable automatic merging on GitHub.
+
+Has no effect if `github.mergify` is set to false.
 
 ---
 
@@ -284,7 +345,7 @@ public readonly autoMergeOptions: AutoMergeOptions;
 
 Configure options for automatic merging on GitHub.
 
-Has no effect if `github.mergify` is set to false.
+Has no effect if `github.mergify` or `autoMerge` is set to false.
 
 ---
 
@@ -400,7 +461,22 @@ Which type of project this is (library/app).
 
 ---
 
-##### `projenTokenSecret`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.projenTokenSecret" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojentokensecret"></a>
+##### `projenCredentials`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.projenCredentials" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojencredentials"></a>
+
+```typescript
+public readonly projenCredentials: GithubCredentials;
+```
+
+- *Type:* [`projen.github.GithubCredentials`](#projen.github.GithubCredentials)
+- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
+
+Choose a method of providing GitHub API access for projen workflows.
+
+---
+
+##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.projenTokenSecret" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojentokensecret"></a>
+
+- *Deprecated:* use `projenCredentials`
 
 ```typescript
 public readonly projenTokenSecret: string;
@@ -435,7 +511,7 @@ public readonly stale: boolean;
 ```
 
 - *Type:* `boolean`
-- *Default:* true
+- *Default:* false
 
 Auto-close of stale issues and pull request.
 
@@ -610,7 +686,9 @@ public readonly codeArtifactOptions: CodeArtifactOptions;
 - *Type:* [`projen.javascript.CodeArtifactOptions`](#projen.javascript.CodeArtifactOptions)
 - *Default:* undefined
 
-Options for publishing npm package to AWS CodeArtifact.
+Options for npm packages using AWS CodeArtifact.
+
+This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
 
 ---
 
@@ -887,6 +965,19 @@ If the package.json for your package is not in the root directory (for example i
 
 ---
 
+##### `scopedPackagesOptions`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.scopedPackagesOptions" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyscopedpackagesoptions"></a>
+
+```typescript
+public readonly scopedPackagesOptions: ScopedPackagesOptions[];
+```
+
+- *Type:* [`projen.javascript.ScopedPackagesOptions`](#projen.javascript.ScopedPackagesOptions)[]
+- *Default:* fetch all scoped packages from the public npm registry
+
+Options for privately hosted scoped packages.
+
+---
+
 ##### `scripts`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.scripts" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyscripts"></a>
 
 ```typescript
@@ -923,7 +1014,7 @@ public readonly jsiiReleaseVersion: string;
 - *Type:* `string`
 - *Default:* "latest"
 
-Version requirement of `jsii-release` which is used to publish modules to npm.
+Version requirement of `publib` which is used to publish modules to npm.
 
 ---
 
@@ -939,6 +1030,21 @@ public readonly majorVersion: number;
 Major version to release from the default branch.
 
 If this is specified, we bump the latest version of this major version line. If not specified, we bump the global latest version.
+
+---
+
+##### `minMajorVersion`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.minMajorVersion" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyminmajorversion"></a>
+
+```typescript
+public readonly minMajorVersion: number;
+```
+
+- *Type:* `number`
+- *Default:* No minimum version is being enforced
+
+Minimal Major version to release.
+
+This can be useful to set to 1, as breaking changes before the 1.x major release are not incrementing the major version number.  Can not be set together with `majorVersion`.
 
 ---
 
@@ -1204,21 +1310,6 @@ A directory which will contain build artifacts.
 
 ---
 
-##### `autoApproveProjenUpgrades`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.autoApproveProjenUpgrades" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautoapproveprojenupgrades"></a>
-
-```typescript
-public readonly autoApproveProjenUpgrades: boolean;
-```
-
-- *Type:* `boolean`
-- *Default:* false
-
-Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
-
-Throw if set to true but `autoApproveOptions` are not defined.
-
----
-
 ##### `autoApproveUpgrades`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.autoApproveUpgrades" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyautoapproveupgrades"></a>
 
 ```typescript
@@ -1244,6 +1335,19 @@ public readonly buildWorkflow: boolean;
 - *Default:* true if not a subproject
 
 Define a GitHub workflow for building PRs.
+
+---
+
+##### `buildWorkflowTriggers`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.buildWorkflowTriggers" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertybuildworkflowtriggers"></a>
+
+```typescript
+public readonly buildWorkflowTriggers: Triggers;
+```
+
+- *Type:* [`projen.github.workflows.Triggers`](#projen.github.workflows.Triggers)
+- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
+
+Build workflow triggers.
 
 ---
 
@@ -1363,7 +1467,7 @@ public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
 - *Type:* [`projen.javascript.UpgradeDependenciesOptions`](#projen.javascript.UpgradeDependenciesOptions)
 - *Default:* default options
 
-Options for depsUpgrade.
+Options for `UpgradeDependencies`.
 
 ---
 
@@ -1525,53 +1629,6 @@ Options for .projenrc.js.
 
 ---
 
-##### ~~`projenUpgradeAutoMerge`~~<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.projenUpgradeAutoMerge" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenupgradeautomerge"></a>
-
-- *Deprecated:* use `autoApproveProjenUpgrades`.
-
-```typescript
-public readonly projenUpgradeAutoMerge: boolean;
-```
-
-- *Type:* `boolean`
-- *Default:* false
-
-Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
-
-Throw if set to true but `autoApproveOptions` are not defined.
-
----
-
-##### `projenUpgradeSchedule`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.projenUpgradeSchedule" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenupgradeschedule"></a>
-
-```typescript
-public readonly projenUpgradeSchedule: string[];
-```
-
-- *Type:* `string`[]
-- *Default:* [ "0 6 * * *" ]
-
-Customize the projenUpgrade schedule in cron expression.
-
----
-
-##### ~~`projenUpgradeSecret`~~<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.projenUpgradeSecret" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenupgradesecret"></a>
-
-- *Deprecated:* use `githubTokenSecret` instead.
-
-```typescript
-public readonly projenUpgradeSecret: string;
-```
-
-- *Type:* `string`
-- *Default:* no automatic projen upgrade pull requests
-
-Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
-
-This setting is a GitHub secret name which contains a GitHub Access Token with `repo` and `workflow` permissions.  This token is used to submit the upgrade pull request, which will likely include workflow updates.  To create a personal access token see https://github.com/settings/tokens
-
----
-
 ##### `projenVersion`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.projenVersion" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyprojenversion"></a>
 
 ```typescript
@@ -1655,10 +1712,10 @@ DEPRECATED: renamed to `release`.
 ##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.workflowBootstrapSteps" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyworkflowbootstrapsteps"></a>
 
 ```typescript
-public readonly workflowBootstrapSteps: any[];
+public readonly workflowBootstrapSteps: JobStep[];
 ```
 
-- *Type:* `any`[]
+- *Type:* [`projen.github.workflows.JobStep`](#projen.github.workflows.JobStep)[]
 - *Default:* "yarn install --frozen-lockfile && yarn projen"
 
 Workflow steps to use in order to bootstrap this repo.
@@ -2125,6 +2182,32 @@ The CDK app's entrypoint (relative to the source directory, which is "src" by de
 
 ---
 
+##### `edgeLambdaAutoDiscover`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.edgeLambdaAutoDiscover" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyedgelambdaautodiscover"></a>
+
+```typescript
+public readonly edgeLambdaAutoDiscover: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* true
+
+Automatically adds an `cloudfront.experimental.EdgeFunction` for each `.edge-lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+
+---
+
+##### `integrationTestAutoDiscover`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.integrationTestAutoDiscover" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertyintegrationtestautodiscover"></a>
+
+```typescript
+public readonly integrationTestAutoDiscover: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* true
+
+Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
+
+---
+
 ##### `lambdaAutoDiscover`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.lambdaAutoDiscover" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertylambdaautodiscover"></a>
 
 ```typescript
@@ -2135,6 +2218,19 @@ public readonly lambdaAutoDiscover: boolean;
 - *Default:* true
 
 Automatically adds an `awscdk.LambdaFunction` for each `.lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+
+---
+
+##### `lambdaExtensionAutoDiscover`<sup>Optional</sup> <a name="@pepperize/projen-awscdk-app-ts.AwsCdkTypeScriptAppOptions.property.lambdaExtensionAutoDiscover" id="pepperizeprojenawscdkapptsawscdktypescriptappoptionspropertylambdaextensionautodiscover"></a>
+
+```typescript
+public readonly lambdaExtensionAutoDiscover: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* true
+
+Automatically adds an `awscdk.LambdaExtension` for each `.lambda-extension.ts` entrypoint in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
 
 ---
 
