@@ -58,8 +58,12 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
     this.jest?.addTestMatch("<rootDir>/**/?(*.)@(spec|test).[tj]s?(x)");
 
     if (!this.github?.mergify && options.github) {
-      const conditions: Array<string> = ["github.event.pull_request.user.login == 'dependabot[bot]'"];
+      const conditions: Array<string> = [
+        "github.actor == 'dependabot[bot]'",
+        "github.event.workflow_run.conclusion == 'success'",
+      ];
 
+      // https://github.com/pascalgn/automerge-action#supported-events
       const mergeJob: Job = {
         runsOn: ["ubuntu-latest"],
         permissions: {
@@ -71,12 +75,15 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
         steps: [
           {
             // https://github.com/pascalgn/automerge-action
-            uses: "pascalgn/automerge-action@v0.14.3",
+            id: "auto-merge",
+            name: "auto-merge",
+            uses: "pascalgn/automerge-action@v0.15.3",
             env: {
               GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
               MERGE_LABELS: "auto-approve,!do-not-merge",
               MERGE_METHOD: "merge",
               MERGE_FORKS: "false",
+              MERGE_RETRIES: "10",
               MERGE_RETRY_SLEEP: "60000",
               MERGE_DELETE_BRANCH: "true",
               MERGE_REQUIRED_APPROVALS: "1",
@@ -87,25 +94,11 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
 
       const workflow = this.github?.addWorkflow("auto-merge")!;
       workflow.on({
-        pullRequest: {
-          types: [
-            "labeled",
-            "unlabeled",
-            "synchronize",
-            "opened",
-            "edited",
-            "ready_for_review",
-            "reopened",
-            "unlocked",
-          ],
-        },
-        pullRequestReview: {
-          types: ["submitted"],
-        },
-        checkSuite: {
+        // https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run
+        workflowRun: {
+          workflows: ["build"],
           types: ["completed"],
         },
-        status: {},
       });
       workflow.addJobs({ merge: mergeJob });
     }
