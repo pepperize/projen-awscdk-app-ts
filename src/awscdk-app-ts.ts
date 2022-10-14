@@ -28,7 +28,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
       autoApproveUpgrades: true,
       autoApproveOptions: {
         ...options.autoApproveOptions,
-        allowedUsernames: ["unerty", "pflorek", "acfo", "dependabot[bot]"],
+        allowedUsernames: ["pflorek", "acfo", "dependabot[bot]"],
         label: "auto-approve",
         secret: "GITHUB_TOKEN",
       },
@@ -52,7 +52,7 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
     this.prettier?.addIgnorePattern("API.md");
     this.formatTask = this.addTask("format", {
       description: "Format with prettier",
-      exec: "prettier --write src/{**/,}*.ts test/{**/,}*.ts .projenrc.js README.md",
+      exec: "prettier --write src/{**/,}*.ts test/{**/,}*.ts .projenrc.[jt]s README.md",
     });
 
     this.jest?.addTestMatch("<rootDir>/**/?(*.)@(spec|test).[tj]s?(x)");

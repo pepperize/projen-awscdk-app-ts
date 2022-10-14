@@ -48,6 +48,6 @@ const project = new cdk.JsiiProject({
   peerDeps: ["projen"],
 });
 
-project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md");
+project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.[jt]s README.md");
 
 project.synth();
