@@ -32,13 +32,6 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
         label: "auto-approve",
         secret: "GITHUB_TOKEN",
       },
-      depsUpgradeOptions: {
-        ...options.depsUpgradeOptions,
-        workflowOptions: {
-          ...options.depsUpgradeOptions?.workflowOptions,
-          secret: "PROJEN_GITHUB_TOKEN",
-        },
-      },
       eslint: true,
       prettier: true,
       prettierOptions: {
