@@ -886,13 +886,13 @@
     tsutils "^3.21.0"
 
 "@typescript-eslint/parser@^5":
-  version "5.54.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.54.0.tgz#def186eb1b1dbd0439df0dacc44fb6d8d5c417fe"
-  integrity sha512-aAVL3Mu2qTi+h/r04WI/5PfNWvO6pdhpeMRWk9R7rEV4mwJNzoWf5CCU5vDKBsPIFQFjEq1xg7XBI2rjiMXQbQ==
+  version "5.54.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.54.1.tgz#05761d7f777ef1c37c971d3af6631715099b084c"
+  integrity sha512-8zaIXJp/nG9Ff9vQNh7TI+C3nA6q6iIsGJ4B4L6MhZ7mHnTMR4YP5vp2xydmFXIy8rpyIVbNAG44871LMt6ujg==
   dependencies:
-    "@typescript-eslint/scope-manager" "5.54.0"
-    "@typescript-eslint/types" "5.54.0"
-    "@typescript-eslint/typescript-estree" "5.54.0"
+    "@typescript-eslint/scope-manager" "5.54.1"
+    "@typescript-eslint/types" "5.54.1"
+    "@typescript-eslint/typescript-estree" "5.54.1"
     debug "^4.3.4"
 
 "@typescript-eslint/scope-manager@5.54.0":
@@ -902,6 +902,14 @@
   dependencies:
     "@typescript-eslint/types" "5.54.0"
     "@typescript-eslint/visitor-keys" "5.54.0"
+
+"@typescript-eslint/scope-manager@5.54.1":
+  version "5.54.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.54.1.tgz#6d864b4915741c608a58ce9912edf5a02bb58735"
+  integrity sha512-zWKuGliXxvuxyM71UA/EcPxaviw39dB2504LqAmFDjmkpO8qNLHcmzlh6pbHs1h/7YQ9bnsO8CCcYCSA8sykUg==
+  dependencies:
+    "@typescript-eslint/types" "5.54.1"
+    "@typescript-eslint/visitor-keys" "5.54.1"
 
 "@typescript-eslint/type-utils@5.54.0":
   version "5.54.0"
@@ -918,6 +926,11 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.54.0.tgz#7d519df01f50739254d89378e0dcac504cab2740"
   integrity sha512-nExy+fDCBEgqblasfeE3aQ3NuafBUxZxgxXcYfzYRZFHdVvk5q60KhCSkG0noHgHRo/xQ/BOzURLZAafFpTkmQ==
 
+"@typescript-eslint/types@5.54.1":
+  version "5.54.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.54.1.tgz#29fbac29a716d0f08c62fe5de70c9b6735de215c"
+  integrity sha512-G9+1vVazrfAfbtmCapJX8jRo2E4MDXxgm/IMOF4oGh3kq7XuK3JRkOg6y2Qu1VsTRmWETyTkWt1wxy7X7/yLkw==
+
 "@typescript-eslint/typescript-estree@5.54.0":
   version "5.54.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-5.54.0.tgz#f6f3440cabee8a43a0b25fa498213ebb61fdfe99"
@@ -925,6 +938,19 @@
   dependencies:
     "@typescript-eslint/types" "5.54.0"
     "@typescript-eslint/visitor-keys" "5.54.0"
+    debug "^4.3.4"
+    globby "^11.1.0"
+    is-glob "^4.0.3"
+    semver "^7.3.7"
+    tsutils "^3.21.0"
+
+"@typescript-eslint/typescript-estree@5.54.1":
+  version "5.54.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-5.54.1.tgz#df7b6ae05fd8fef724a87afa7e2f57fa4a599be1"
+  integrity sha512-bjK5t+S6ffHnVwA0qRPTZrxKSaFYocwFIkZx5k7pvWfsB1I57pO/0M0Skatzzw1sCkjJ83AfGTL0oFIFiDX3bg==
+  dependencies:
+    "@typescript-eslint/types" "5.54.1"
+    "@typescript-eslint/visitor-keys" "5.54.1"
     debug "^4.3.4"
     globby "^11.1.0"
     is-glob "^4.0.3"
@@ -951,6 +977,14 @@
   integrity sha512-xu4wT7aRCakGINTLGeyGqDn+78BwFlggwBjnHa1ar/KaGagnmwLYmlrXIrgAaQ3AE1Vd6nLfKASm7LrFHNbKGA==
   dependencies:
     "@typescript-eslint/types" "5.54.0"
+    eslint-visitor-keys "^3.3.0"
+
+"@typescript-eslint/visitor-keys@5.54.1":
+  version "5.54.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-5.54.1.tgz#d7a8a0f7181d6ac748f4d47b2306e0513b98bf8b"
+  integrity sha512-q8iSoHTgwCfgcRJ2l2x+xCbu8nBlRAlsQ33k24Adj8eoVBE0f8dUeI+bAa8F84Mv05UGbAx57g2zrRsYIooqQg==
+  dependencies:
+    "@typescript-eslint/types" "5.54.1"
     eslint-visitor-keys "^3.3.0"
 
 "@xmldom/xmldom@^0.8.6":
@@ -3585,7 +3619,7 @@ jsii-rosetta@^1.77.0:
     workerpool "^6.4.0"
     yargs "^16.2.0"
 
-jsii@1.77.0:
+jsii@1.77.0, jsii@^1.52.1:
   version "1.77.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.77.0.tgz#bc3f4e3c475045f5d8d49c3c6fe202b33a1d0705"
   integrity sha512-3VODnWUhljro1+PmWlTWAEUPxWGWwCOmzOS6EG7l5E1KthurCgQDzhpTySlw80U85mGU9XvDJMcpvwuj3ESrKA==
@@ -3597,25 +3631,6 @@ jsii@1.77.0:
     fast-deep-equal "^3.1.3"
     fs-extra "^10.1.0"
     log4js "^6.8.0"
-    semver "^7.3.8"
-    semver-intersect "^1.4.0"
-    sort-json "^2.0.1"
-    spdx-license-list "^6.6.0"
-    typescript "~3.9.10"
-    yargs "^16.2.0"
-
-jsii@^1.52.1:
-  version "1.76.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.76.0.tgz#b40c98108b1cac2cb86a5eb2b3f201ba52a316b6"
-  integrity sha512-IlQmxPPnscn2Va/cnnXRnQ7bnxEkO8ImKW0MBlEr66oqxhFQ9jy9+FWzOp/5kfHzhyyyM5mcqitB8O6fr1moIw==
-  dependencies:
-    "@jsii/check-node" "1.76.0"
-    "@jsii/spec" "^1.76.0"
-    case "^1.6.3"
-    chalk "^4"
-    fast-deep-equal "^3.1.3"
-    fs-extra "^10.1.0"
-    log4js "^6.7.1"
     semver "^7.3.8"
     semver-intersect "^1.4.0"
     sort-json "^2.0.1"
@@ -3799,18 +3814,7 @@ lodash@^4.17.15, lodash@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-log4js@^6.7.1:
-  version "6.7.1"
-  resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.7.1.tgz#06e12b1ac915dd1067146ffad8215f666f7d2c51"
-  integrity sha512-lzbd0Eq1HRdWM2abSD7mk6YIVY0AogGJzb/z+lqzRk+8+XJP+M6L1MS5FUSc3jjGru4dbKjEMJmqlsoYYpuivQ==
-  dependencies:
-    date-format "^4.0.14"
-    debug "^4.3.4"
-    flatted "^3.2.7"
-    rfdc "^1.3.0"
-    streamroller "^3.1.3"
-
-log4js@^6.8.0:
+log4js@^6.7.1, log4js@^6.8.0:
   version "6.9.0"
   resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.9.0.tgz#2687c08b330f610054e79c492b35c677c9b183eb"
   integrity sha512-sAGxJKqxXFlK+05OlMH6SIDAdvgQHj95EfSDOfkHW6BQUlkz+fZw8PWhydfRHq+0UuWYWR55mVnR+KTnWE2JDA==
@@ -4774,15 +4778,6 @@ standard-version@^9:
     semver "^7.1.1"
     stringify-package "^1.0.1"
     yargs "^16.0.0"
-
-streamroller@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/streamroller/-/streamroller-3.1.3.tgz#d95689a8c29b30d093525d0baffe6616fd62ca7e"
-  integrity sha512-CphIJyFx2SALGHeINanjFRKQ4l7x2c+rXYJ4BMq0gd+ZK0gi4VT8b+eHe2wi58x4UayBAKx4xtHpXT/ea1cz8w==
-  dependencies:
-    date-format "^4.0.14"
-    debug "^4.3.4"
-    fs-extra "^8.1.0"
 
 streamroller@^3.1.5:
   version "3.1.5"
