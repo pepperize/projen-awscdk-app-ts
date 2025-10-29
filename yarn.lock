@@ -612,14 +612,6 @@
     chalk "^4.1.2"
     semver "^7.7.1"
 
-"@jsii/check-node@1.116.0":
-  version "1.116.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.116.0.tgz#f4db6461511f60232aa02bfaf46bd607da49bbae"
-  integrity sha512-Avk6AKggZJcWpDLGH8lb5duyfGIVHCmmeglM3LfmQvKU/zumbRfeg4LvUXGqJflnRB7GAbzbx8iDNo8FMjIWjg==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.7.2"
-
 "@jsii/check-node@1.118.0":
   version "1.118.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.118.0.tgz#0be4fef43c7058764e3b4d146c6fbc80306de6bd"
@@ -627,13 +619,6 @@
   dependencies:
     chalk "^4.1.2"
     semver "^7.7.2"
-
-"@jsii/spec@1.116.0":
-  version "1.116.0"
-  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.116.0.tgz#8da502da897f15b46ac969033cea5cbee4738f43"
-  integrity sha512-BqsOMsE7Md6EwaLammXeCOi20GlsA4lAawIrPN0jHeFjZnEqUsiWRXZw+9EG3lTImW9QLVN1cF9kbQ3t3vAXeQ==
-  dependencies:
-    ajv "^8.17.1"
 
 "@jsii/spec@1.118.0", "@jsii/spec@^1.112.0", "@jsii/spec@^1.117.0":
   version "1.118.0"
@@ -3847,7 +3832,7 @@ jsii-pacmak@^1.69.0:
     xmlbuilder "^15.1.1"
     yargs "^17.7.2"
 
-jsii-reflect@^1.116.0, jsii-reflect@^1.117.0, jsii-reflect@^1.118.0:
+jsii-reflect@^1.117.0, jsii-reflect@^1.118.0:
   version "1.118.0"
   resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.118.0.tgz#ff33ffba10090e5903dd9ddb2a5c6252c1fbf1c3"
   integrity sha512-P3iASRGS8j87uT66MZ2jQvxPZRLdXBMoSEBECn3+krKCauaZntymXm/iQmWCgTnpt43cwz+eYkY1D3KA1sGjzA==
