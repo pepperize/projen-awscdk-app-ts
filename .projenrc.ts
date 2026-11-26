@@ -44,8 +44,24 @@ const project = new cdk.JsiiProject({
 
   gitignore: [".idea/", "*.iml"],
 
-  devDeps: ["projen"],
-  peerDeps: ["projen"],
+  packageManager: javascript.NodePackageManager.YARN_CLASSIC,
+  minNodeVersion: "22.13.0",
+  typescriptVersion: "~5.9.0",
+  jestOptions: {
+    jestVersion: "^29",
+    jestConfig: {
+      // projen depends on the ESM-only `dax`, which jest must transpile to CommonJS
+      transformIgnorePatterns: [
+        "/node_modules/(?!(dax|@dsherret|console-static-text)/)(?!.*/node_modules/(dax|@dsherret|console-static-text)/)",
+      ],
+      transform: {
+        "^.+\\.m?js$": new javascript.Transform("ts-jest", { tsconfig: { allowJs: true } }),
+      },
+    },
+  },
+
+  devDeps: ["projen@^0.105.12", "@types/node@^22"],
+  peerDeps: ["projen@^0.105.12"],
 });
 
 project.setScript("format", "prettier --write src/**/*.ts test/**/*.ts .projenrc.[jt]s README.md");
