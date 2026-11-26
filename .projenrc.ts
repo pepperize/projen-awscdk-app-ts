@@ -41,6 +41,11 @@ const project = new cdk.JsiiProject({
     distName: "pepperize.projen-awscdk-app-ts",
     module: "pepperize_projen_awscdk_app_ts",
   },
+  publishToMaven: {
+    mavenGroupId: "com.pepperize",
+    mavenArtifactId: "projen-awscdk-app-ts",
+    javaPackage: "com.pepperize.projen.awscdk_app_ts",
+  },
 
   gitignore: [".idea/", "*.iml"],
 
