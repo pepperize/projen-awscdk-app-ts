@@ -18,6 +18,7 @@
     "eslint": "projen eslint",
     "package": "projen package",
     "package-all": "projen package-all",
+    "package:java": "projen package:java",
     "package:js": "projen package:js",
     "package:python": "projen package:python",
     "post-compile": "projen post-compile",
@@ -145,6 +146,13 @@
   "jsii": {
     "outdir": "dist",
     "targets": {
+      "java": {
+        "package": "com.pepperize.projen.awscdk_app_ts",
+        "maven": {
+          "groupId": "com.pepperize",
+          "artifactId": "projen-awscdk-app-ts"
+        }
+      },
       "python": {
         "distName": "pepperize.projen-awscdk-app-ts",
         "module": "pepperize_projen_awscdk_app_ts"
