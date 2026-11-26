@@ -4,7 +4,7 @@ describe("AwsCdkTypeScriptApp", () => {
   it("", () => {
     // Given
     const project = new AwsCdkTypeScriptApp({
-      cdkVersion: "1.139.0",
+      cdkVersion: "2.1.0",
       ...defaultOptions,
     });
 
