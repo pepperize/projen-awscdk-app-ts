@@ -57,6 +57,13 @@ export class AwsCdkTypeScriptApp extends awscdk.AwsCdkTypeScriptApp {
 
     this.jest?.addTestMatch("<rootDir>/**/?(*.)@(spec|test).[tj]s?(x)");
 
+    // self-mutation commits stop dependabot from rebasing, so conflicting PRs never reach the queue
+    this.github?.mergify?.addRule({
+      name: "Recreate conflicting dependabot pull requests",
+      conditions: ["author=dependabot[bot]", "conflict", "-closed"],
+      actions: { comment: { message: "@dependabot recreate" } },
+    });
+
     if (!this.github?.mergify && options.github) {
       const conditions: Array<string> = [
         "github.actor == 'dependabot[bot]'",
